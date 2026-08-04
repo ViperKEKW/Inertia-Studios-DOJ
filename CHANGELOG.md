@@ -1,5 +1,35 @@
 # Changelog — Inertia Studios · DOJ & Court System
 
+## [1.2.0] — 2026-08-03
+
+**Courthouses are placed from inside the game, and saved changes take hold immediately.**
+
+Requires `inertia_lib` **2.1.0** or newer (free, included).
+
+### Added
+
+- **A Courthouses tab.** Stand where the terminal should be, press *Put a courthouse here*, and name
+  it. The map blip and the interaction appear straight away. Retiring one removes both and leaves every
+  other courthouse exactly where it is.
+- Courthouses can be **added and retired, never removed or reordered** — the same rule every positions
+  list in the Inertia range follows, and it is enforced on the server rather than left to the panel.
+
+### Fixed
+
+- **The courthouse was always built from the config file, never from your saved settings.** The client
+  waited for the config table to exist — and it exists immediately, because config files load before
+  client code. Your saved settings arrive later, after a round-trip to the server, so the blip and the
+  terminal were placed before they could be applied. This lost the race every time, on every restart.
+- **Courthouse interaction zones are removed when the resource stops.** Blips were cleaned up; the
+  target zones were not, so every restart while tuning stacked another invisible terminal on the
+  courthouse steps.
+
+### Unchanged
+
+The DOJ tab still declares **no operations** and no data lists, and it never will. Judicial authority
+is in-character: a Judge is a player's character, not a moderator. Staff configure the court from the
+panel; they act inside the court through the court.
+
 ## [1.1.0] — 2026-07-30
 
 Configure the court from inside the game. Staff open the Inertia Console, pick the **DOJ & Courts**
